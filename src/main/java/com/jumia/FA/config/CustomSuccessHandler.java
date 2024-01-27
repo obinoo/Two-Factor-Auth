@@ -23,7 +23,7 @@ import org.springframework.stereotype.Component;
 public class CustomSuccessHandler implements AuthenticationSuccessHandler{
 
     @Autowired
-    UserRepository userRepo;
+    private UserRepository userRepo;
 
     AuthenticationServiceImpl userService;
 

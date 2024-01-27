@@ -31,7 +31,7 @@ public class AuthenticationController {
     private  AuthenticationServiceImpl authenticationService;
 
     @Autowired
-    UserRepository userRepository;
+   private UserRepository userRepository;
 
     @Operation(summary = "User Registration",
                 description = "Register a new User")

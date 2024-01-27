@@ -21,7 +21,7 @@ import java.io.IOException;
 @RequiredArgsConstructor
 public class Filter extends OncePerRequestFilter {
 
-    private final CustomUserDetailsService userDetailsService;
+    private CustomUserDetailsService userDetailsService;
     private final TokenManager tokenManager;
 
         @Override
