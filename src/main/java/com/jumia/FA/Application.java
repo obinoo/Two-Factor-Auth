@@ -9,7 +9,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication
-@EnableJpaRepositories(basePackages = {"com.jumia.FA.repository.UserRepository"})
+@EnableJpaRepositories(basePackages = {"com.jumia.FA.repository"})
 @ComponentScan(basePackages = {"com.jumia.FA.entity"})
 @OpenAPIDefinition(
 		info = @Info(
