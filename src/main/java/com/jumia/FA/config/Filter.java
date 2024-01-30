@@ -21,10 +21,10 @@ import java.io.IOException;
 @Component
 public class Filter extends OncePerRequestFilter {
 
-    @Autowired
+     @Autowired(required = false)
     private CustomUserDetailsService userDetailsService;
     @Autowired
-    private  TokenManager tokenManager;
+    private TokenManager tokenManager;
 
         @Override
         protected void doFilterInternal(HttpServletRequest request, @NonNull HttpServletResponse response, @NonNull FilterChain filterChain) throws ServletException, IOException {
