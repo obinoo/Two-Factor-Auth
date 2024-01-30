@@ -29,7 +29,7 @@ import java.util.Optional;
 public class AuthenticationServiceImpl implements AuthenticationService {
 
     @Autowired
-    AuthenticationManager authenticationManager;
+    private AuthenticationManager authenticationManager;
     @Autowired
     private UserDetailsService userDetailsService;
     @Autowired
