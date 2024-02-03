@@ -23,7 +23,8 @@ public class Filter extends OncePerRequestFilter {
 
      @Autowired(required = false)
     private CustomUserDetailsService userDetailsService;
-    @Autowired
+
+     @Autowired(required = false)
     private TokenManager tokenManager;
 
         @Override
