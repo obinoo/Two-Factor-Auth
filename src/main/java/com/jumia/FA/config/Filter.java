@@ -24,8 +24,7 @@ public class Filter extends OncePerRequestFilter {
      @Autowired(required = false)
     private CustomUserDetailsService userDetailsService;
 
-     @Autowired(required = false)
-    private TokenManager tokenManager;
+    TokenManager tokenManager;
 
         @Override
         protected void doFilterInternal(HttpServletRequest request, @NonNull HttpServletResponse response, @NonNull FilterChain filterChain) throws ServletException, IOException {
