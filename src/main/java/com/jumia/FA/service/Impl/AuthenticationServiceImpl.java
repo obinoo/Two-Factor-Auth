@@ -32,8 +32,8 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     private AuthenticationManager authenticationManager;
     @Autowired
     private UserDetailsService userDetailsService;
-    @Autowired
-    private TokenManager tokenManager;
+
+    TokenManager tokenManager;
     @Autowired
     private PasswordEncoder passwordEncoder;
     @Autowired

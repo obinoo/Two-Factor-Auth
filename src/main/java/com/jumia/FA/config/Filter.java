@@ -21,8 +21,7 @@ import java.io.IOException;
 @Component
 public class Filter extends OncePerRequestFilter {
 
-     @Autowired(required = false)
-    private CustomUserDetailsService userDetailsService;
+    CustomUserDetailsService userDetailsService;
 
     TokenManager tokenManager;
 
