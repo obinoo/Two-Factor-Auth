@@ -22,10 +22,11 @@ import org.springframework.stereotype.Component;
 @Component
 public class CustomSuccessHandler implements AuthenticationSuccessHandler{
 
-    UserRepository userRepo;
+    @Autowired
+    private UserRepository userRepo;
 
     @Autowired
-  private AuthenticationServiceImpl userService;
+   private AuthenticationServiceImpl userService;
 
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response,

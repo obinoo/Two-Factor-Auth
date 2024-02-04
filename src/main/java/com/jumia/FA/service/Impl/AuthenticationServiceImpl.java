@@ -27,7 +27,7 @@ import java.util.Optional;
 @Service
 public class AuthenticationServiceImpl implements AuthenticationService {
 
-
+    @Autowired
     private TokenManager tokenManager;
     @Autowired
     private AuthenticationManager authenticationManager;
