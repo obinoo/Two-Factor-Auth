@@ -3,7 +3,6 @@ package com.jumia.FA.service.Impl;
 import com.jumia.FA.Exception.EmailExistsException;
 import com.jumia.FA.dto.request.Login;
 import com.jumia.FA.dto.request.SignUp;
-import com.jumia.FA.dto.response.OtpResponse;
 import com.jumia.FA.dto.response.ResponseModel;
 import com.jumia.FA.entity.Role;
 import com.jumia.FA.entity.User;
@@ -28,17 +27,21 @@ import java.util.Optional;
 @Service
 public class AuthenticationServiceImpl implements AuthenticationService {
 
+    private final TokenManager tokenManager;
+
     @Autowired
     private AuthenticationManager authenticationManager;
     @Autowired
     private UserDetailsService userDetailsService;
 
-    TokenManager tokenManager;
     @Autowired
     private PasswordEncoder passwordEncoder;
     @Autowired
     private UserRepository userRepository;
 
+    public AuthenticationServiceImpl(TokenManager tokenManager) {
+        this.tokenManager = tokenManager;
+    }
 
     @Autowired
     JavaMailSender javaMailSender;
