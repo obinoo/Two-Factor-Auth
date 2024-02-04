@@ -24,11 +24,8 @@ public class CustomSuccessHandler implements AuthenticationSuccessHandler{
 
     UserRepository userRepo;
 
-  private final AuthenticationServiceImpl userService;
-
-  public CustomSuccessHandler(AuthenticationServiceImpl userService){
-      this.userService = userService;
-  }
+    @Autowired
+  private AuthenticationServiceImpl userService;
 
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response,

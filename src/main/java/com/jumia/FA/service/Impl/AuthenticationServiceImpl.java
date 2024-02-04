@@ -27,21 +27,17 @@ import java.util.Optional;
 @Service
 public class AuthenticationServiceImpl implements AuthenticationService {
 
-    private final TokenManager tokenManager;
-
+    @Autowired
+    private TokenManager tokenManager;
     @Autowired
     private AuthenticationManager authenticationManager;
     @Autowired
     private UserDetailsService userDetailsService;
-
     @Autowired
     private PasswordEncoder passwordEncoder;
     @Autowired
     private UserRepository userRepository;
 
-    public AuthenticationServiceImpl(TokenManager tokenManager) {
-        this.tokenManager = tokenManager;
-    }
 
     @Autowired
     JavaMailSender javaMailSender;
