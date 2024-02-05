@@ -25,7 +25,7 @@ public class Filter extends OncePerRequestFilter {
     @Autowired
     private CustomUserDetailsService userDetailsService;
 
-    @Autowired(required = false)
+    @Autowired
     @Qualifier("TokenManager")
     private TokenManager tokenManager;
 
