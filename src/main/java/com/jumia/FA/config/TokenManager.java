@@ -1,4 +1,4 @@
-package com.jumia.FA.jwtUtils;
+package com.jumia.FA.config;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;

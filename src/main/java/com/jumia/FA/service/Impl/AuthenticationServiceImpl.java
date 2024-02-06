@@ -6,7 +6,7 @@ import com.jumia.FA.dto.request.SignUp;
 import com.jumia.FA.dto.response.ResponseModel;
 import com.jumia.FA.entity.Role;
 import com.jumia.FA.entity.User;
-import com.jumia.FA.jwtUtils.TokenManager;
+import com.jumia.FA.config.TokenManager;
 import com.jumia.FA.repository.UserRepository;
 import com.jumia.FA.service.AuthenticationService;
 import org.springframework.beans.factory.annotation.Autowired;
