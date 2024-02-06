@@ -3,12 +3,22 @@ package com.jumia.FA;
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import io.swagger.v3.oas.annotations.info.Contact;
 import io.swagger.v3.oas.annotations.info.Info;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
+import org.springframework.boot.autoconfigure.orm.jpa.JpaProperties;
+import org.springframework.boot.orm.jpa.EntityManagerFactoryBuilder;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 
+import javax.sql.DataSource;
+
+@Configuration
 @SpringBootApplication
 @EnableJpaRepositories(basePackages = "com.jumia.FA.repository")
 @ComponentScan(basePackages = "com.jumia.FA")
@@ -28,6 +38,20 @@ public class Application {
 
 	public static void main(String[] args) {
 		SpringApplication.run(Application.class, args);
+	}
+
+	@Primary
+	@Bean(name = "jpaSharedEM_entityManagerFactory")
+	public LocalContainerEntityManagerFactoryBean entityManagerFactory(
+			EntityManagerFactoryBuilder builder,
+			@Qualifier("dataSource") DataSource dataSource,
+			JpaProperties jpaProperties) {
+		return builder
+				.dataSource(dataSource)
+				.packages("com.jumia.FA.model")
+				.persistenceUnit("jpaSharedEM")
+				.properties(jpaProperties.getProperties())
+				.build();
 	}
 
 }
