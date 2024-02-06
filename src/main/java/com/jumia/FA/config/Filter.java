@@ -19,16 +19,13 @@ import java.io.IOException;
 @Component
 public class Filter extends OncePerRequestFilter {
 
-    private final CustomUserDetailsService userDetailsService;
+    @Autowired
+    private CustomUserDetailsService userDetailsService;
 
     @Autowired
     @Qualifier("TokenManager")
     private TokenManager tokenManager;
 
-    @Autowired
-    public Filter(CustomUserDetailsService userDetailsService){
-        this.userDetailsService=userDetailsService;
-    }
 
         @Override
         protected void doFilterInternal(HttpServletRequest request, @NonNull HttpServletResponse response, @NonNull FilterChain filterChain) throws ServletException, IOException {
