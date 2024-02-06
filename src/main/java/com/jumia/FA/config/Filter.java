@@ -1,5 +1,6 @@
 package com.jumia.FA.config;
 
+import com.jumia.FA.service.CustomUserDetailsService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
