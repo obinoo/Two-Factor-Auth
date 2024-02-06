@@ -10,7 +10,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication
 @EnableJpaRepositories(basePackages = {"com.jumia.FA.repository"})
-@ComponentScan(basePackages = {"com.jumia.FA.entity", "com.jumia.FA.config","com.jumia.FA.service"})
+@ComponentScan(basePackages = {"com.jumia.FA"})
 @OpenAPIDefinition(
 		info = @Info(
 				title = "2FA",
