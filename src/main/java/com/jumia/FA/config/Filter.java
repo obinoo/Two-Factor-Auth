@@ -6,6 +6,8 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.NonNull;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -18,16 +20,17 @@ import java.io.IOException;
 @Component
 public class Filter extends OncePerRequestFilter {
 
-    private final CustomUserDetailsService userDetailsService;
+    @Autowired
+    private CustomUserDetailsService userDetailsService;
 
-//    @Autowired
-//    @Qualifier("TokenManager")
-    private final TokenManager tokenManager;
+    @Autowired
+    @Qualifier("TokenManager")
+    private TokenManager tokenManager;
 
-    public Filter(TokenManager tokenManager, CustomUserDetailsService userDetailsService){
-        this.tokenManager= tokenManager;
-        this.userDetailsService=userDetailsService;
-    }
+//    public Filter(TokenManager tokenManager, CustomUserDetailsService userDetailsService){
+//        this.tokenManager= tokenManager;
+//        this.userDetailsService=userDetailsService;
+//    }
 
         @Override
         protected void doFilterInternal(HttpServletRequest request, @NonNull HttpServletResponse response, @NonNull FilterChain filterChain) throws ServletException, IOException {
