@@ -24,6 +24,7 @@ public class SecurityConfig{
 
     @Autowired
    private CustomUserDetailsService service;
+
     @Autowired
    private Filter authFilter;
 
