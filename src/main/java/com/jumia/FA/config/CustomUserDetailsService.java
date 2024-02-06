@@ -1,4 +1,4 @@
-package com.jumia.FA.service;
+package com.jumia.FA.config;
 
 import com.jumia.FA.entity.User;
 import com.jumia.FA.repository.UserRepository;
