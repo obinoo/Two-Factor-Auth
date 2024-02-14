@@ -40,18 +40,18 @@ public class Application {
 		SpringApplication.run(Application.class, args);
 	}
 
-	@Primary
-	@Bean(name = "jpaSharedEM_entityManagerFactory")
-	public LocalContainerEntityManagerFactoryBean entityManagerFactory(
-			EntityManagerFactoryBuilder builder,
-			@Qualifier("dataSource") DataSource dataSource,
-			JpaProperties jpaProperties) {
-		return builder
-				.dataSource(dataSource)
-				.packages("com.jumia.FA.model")
-				.persistenceUnit("jpaSharedEM")
-				.properties(jpaProperties.getProperties())
-				.build();
-	}
+//	@Primary
+//	@Bean(name = "jpaSharedEM_entityManagerFactory")
+//	public LocalContainerEntityManagerFactoryBean entityManagerFactory(
+//			EntityManagerFactoryBuilder builder,
+//			@Qualifier("dataSource") DataSource dataSource,
+//			JpaProperties jpaProperties) {
+//		return builder
+//				.dataSource(dataSource)
+//				.packages("com.jumia.FA.model")
+//				.persistenceUnit("jpaSharedEM")
+//				.properties(jpaProperties.getProperties())
+//				.build();
+//	}
 
 }
