@@ -22,16 +22,21 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
+
 @RestController
 @CrossOrigin
 
 public class AuthenticationController {
 
-    @Autowired
-    private AuthenticationServiceImpl authenticationService;
+    private final AuthenticationServiceImpl authenticationService;
+    private final UserRepository userRepository;
+
 
     @Autowired
-   private UserRepository userRepository;
+    public AuthenticationController(AuthenticationServiceImpl authenticationService, UserRepository userRepository){
+        this.authenticationService = authenticationService;
+        this.userRepository=userRepository;
+    }
 
     @Operation(summary = "User Registration",
                 description = "Register a new User")
@@ -106,5 +111,8 @@ public class AuthenticationController {
         }
         else
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid OTP");
+
+
     }
+
 }
