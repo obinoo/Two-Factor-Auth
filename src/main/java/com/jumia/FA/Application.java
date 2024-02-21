@@ -1,6 +1,9 @@
 package com.jumia.FA;
 
+import com.jumia.FA.config.Filter;
 import com.jumia.FA.config.LoginEventListener;
+import com.jumia.FA.config.TokenManager;
+import com.jumia.FA.service.CustomUserDetailsService;
 import com.jumia.FA.service.EmailService;
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import io.swagger.v3.oas.annotations.info.Contact;
@@ -39,5 +42,15 @@ public class Application {
 	@Bean
 	public LoginEventListener loginEventListener(EmailService emailService){
 		return new LoginEventListener(emailService);
+	}
+
+	@Bean
+	public TokenManager tokenManager(){
+		return new TokenManager();
+	}
+
+	@Bean
+	public Filter filter(CustomUserDetailsService userDetailsService, TokenManager tokenManager){
+		return new Filter(userDetailsService, tokenManager);
 	}
 }
