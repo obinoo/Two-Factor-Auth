@@ -32,7 +32,6 @@ public class AuthenticationController {
     private final UserRepository userRepository;
 
 
-    @Autowired
     public AuthenticationController(AuthenticationServiceImpl authenticationService, UserRepository userRepository){
         this.authenticationService = authenticationService;
         this.userRepository=userRepository;

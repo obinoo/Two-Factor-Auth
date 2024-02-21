@@ -22,7 +22,7 @@ public class CustomSuccessHandler implements AuthenticationSuccessHandler{
     private final UserRepository userRepo;
     private final AuthenticationServiceImpl userService;
 
-    @Autowired
+
     public CustomSuccessHandler(UserRepository userRepo, AuthenticationServiceImpl userService){
         this.userRepo = userRepo;
         this.userService= userService;

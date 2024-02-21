@@ -1,5 +1,7 @@
 package com.jumia.FA;
 
+import com.jumia.FA.config.LoginEventListener;
+import com.jumia.FA.service.EmailService;
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import io.swagger.v3.oas.annotations.info.Contact;
 import io.swagger.v3.oas.annotations.info.Info;
@@ -40,18 +42,9 @@ public class Application {
 		SpringApplication.run(Application.class, args);
 	}
 
-//	@Primary
-//	@Bean(name = "jpaSharedEM_entityManagerFactory")
-//	public LocalContainerEntityManagerFactoryBean entityManagerFactory(
-//			EntityManagerFactoryBuilder builder,
-//			@Qualifier("dataSource") DataSource dataSource,
-//			JpaProperties jpaProperties) {
-//		return builder
-//				.dataSource(dataSource)
-//				.packages("com.jumia.FA.model")
-//				.persistenceUnit("jpaSharedEM")
-//				.properties(jpaProperties.getProperties())
-//				.build();
-//	}
+	@Bean
+	public LoginEventListener loginEventListener(EmailService emailService){
+		return new LoginEventListener(emailService);
+	}
 
 }

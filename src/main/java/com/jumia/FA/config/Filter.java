@@ -24,7 +24,7 @@ public class Filter extends OncePerRequestFilter {
 
     private final TokenManager tokenManager;
 
-    @Autowired
+
     public Filter(CustomUserDetailsService userDetailsService, TokenManager tokenManager){
         this.userDetailsService = userDetailsService;
         this.tokenManager = tokenManager;

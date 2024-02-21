@@ -26,7 +26,7 @@ public class SecurityConfig{
 
    private final Filter authFilter;
 
-   @Autowired
+
    public SecurityConfig(CustomUserDetailsService service, Filter authFilter){
        this.authFilter=authFilter;
        this.service = service;
