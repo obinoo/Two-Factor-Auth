@@ -7,14 +7,15 @@ import com.jumia.FA.dto.request.SignUp;
 import com.jumia.FA.dto.response.ResponseModel;
 import com.jumia.FA.entity.User;
 import com.jumia.FA.repository.UserRepository;
+import com.jumia.FA.service.EmailService;
 import com.jumia.FA.service.Impl.AuthenticationServiceImpl;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import jakarta.mail.MessagingException;
 import jakarta.validation.Valid;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContext;
@@ -30,11 +31,14 @@ public class AuthenticationController {
 
     private final AuthenticationServiceImpl authenticationService;
     private final UserRepository userRepository;
+    private final EmailService emailService;
 
 
-    public AuthenticationController(AuthenticationServiceImpl authenticationService, UserRepository userRepository){
+    public AuthenticationController(AuthenticationServiceImpl authenticationService,
+                                    UserRepository userRepository, EmailService emailService){
         this.authenticationService = authenticationService;
         this.userRepository=userRepository;
+        this.emailService = emailService;
     }
 
     @Operation(summary = "User Registration",
@@ -96,7 +100,7 @@ public class AuthenticationController {
             @ApiResponse(responseCode = "500", description = "Internal server error")
     })
     @PostMapping("/otpCode")
-    public ResponseEntity<String> otpVerification(@RequestBody OtpVerification otpVerification) {
+    public ResponseEntity<String> otpVerification(@RequestBody OtpVerification otpVerification) throws MessagingException {
         String username = otpVerification.getEmail();
         int enteredOtp = otpVerification.getOtp();
 
@@ -106,6 +110,7 @@ public class AuthenticationController {
         if(users.getOtp() == enteredOtp) {
             users.setActive(true);
             userRepository.save(users);
+            emailService.LoginNotification(username);
             return ResponseEntity.ok("OTP verification successful. Redirecting to /dashboard");
         }
         else
