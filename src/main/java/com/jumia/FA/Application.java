@@ -53,4 +53,5 @@ public class Application {
 	public Filter filter(CustomUserDetailsService userDetailsService, TokenManager tokenManager){
 		return new Filter(userDetailsService, tokenManager);
 	}
+
 }
